@@ -12,6 +12,15 @@ import { Input } from './ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { valueUpdater } from '../lib/utils'
 
+import axios from 'axios'
+
+// make axios requests with access control allow origin header
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+axios.get('https://vioorav4cpczeyteacgltbmyla0uvddi.lambda-url.us-east-2.on.aws/').then((response) => {
+  console.log(response.data)
+})
+
+
 export interface Payment {
   id: string
   url: string

@@ -15,64 +15,18 @@ import { valueUpdater } from '../lib/utils'
 import axios from 'axios'
 
 // make axios requests with access control allow origin header
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
-axios.get('https://vioorav4cpczeyteacgltbmyla0uvddi.lambda-url.us-east-2.on.aws/').then((response) => {
-  console.log(response.data)
+
+const hola = axios.get('https://zxzi5v23l54ruti3hwovcsxgfa0nbhic.lambda-url.us-east-2.on.aws/').then(async (response) => {
+  return response.data
 })
-
-
+const data: Payment[] = await hola
 export interface Payment {
   id: string
   url: string
   status: 'pending' | 'processing' | 'reported' | 'false alarm'
   brand: string
-  discoverTime: string
+  discovertime: string
 }
-
-const data: Payment[] = [
-  {
-    id: 'm5gr84i9',
-    url: 'https://example.com',
-    status: 'pending',
-    brand: 'HSBC Bank',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '3u1reuv4',
-    url: 'https://example.com',
-    status: 'pending',
-    brand: 'Bank of America',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'derv1ws0',
-    url: 'https://example.com',
-    status: 'processing',
-    brand: 'HSBC Bank',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    url: 'https://example.com',
-    status: 'processing',
-    brand: 'CA BANK',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    url: 'https://example.com',
-    status: 'processing',
-    brand: 'CA BANK',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'bhqecj4p',
-    url: 'https://example.com',
-    status: 'reported',
-    brand: 'CAIXA Bank',
-    discoverTime: '2024-02-22',
-  },
-]
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -95,7 +49,7 @@ const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('status')),
+    cell: ({ row }) => h('div', { class: 'capitalize' }, 'pending'),
   },
   {
     accessorKey: 'brand',
@@ -117,9 +71,9 @@ const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => h('a', { href: row.getValue('url') }, row.getValue('url')),
   },
   {
-    accessorKey: 'discoverTime',
+    accessorKey: 'discovertime',
     header: 'Discover Time',
-    cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discoverTime')),
+    cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discovertime')),
   },
   // {
   //   id: 'actions',

@@ -12,72 +12,25 @@ import { Input } from './ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { valueUpdater } from '../lib/utils'
 // Number, bank, cardType type, country
+
+import axios from 'axios'
+
+// make axios requests with access control allow origin header
+
+const hola = axios.get('https://cwbiwg5kzdml6tlwu3kx5dzazq0nrlpt.lambda-url.us-east-2.on.aws/').then(async (response) => {
+  return response.data
+})
+const data: Payment[] = await hola
 export interface Payment {
   status: 'pending' | 'processing' | 'reported' | 'false alarm'
   id: string
   number: string
+  bin: string
   bank: string
-  cardType: string
-  country: string
-  discoverTime: string
+  // cardType: string
+  // country: string
+  // discoverTime: string
 }
-
-const data: Payment[] = [
-  {
-    id: 'm5gr84i9',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'pending',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '3u1reuv4',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'pending',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'derv1ws0',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'processing',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'processing',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'processing',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'bhqecj4p',
-    number: '45171324',
-    bank: 'BANCO SANTANDER',
-    status: 'reported',
-    cardType: 'debit',
-    country: 'Argentina',
-    discoverTime: '2024-02-22',
-  },
-]
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -100,42 +53,47 @@ const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('status')),
+    cell: ({ row }) => h('div', { class: 'capitalize' }, 'pending'),
   },
   {
     accessorKey: 'bank',
     header: 'bank',
     cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('bank')),
   },
+  // {
+  //   accessorKey: 'cardType',
+  //   header: ({ column }) => {
+  //     return h(
+  //       Button,
+  //       {
+  //         variant: 'ghost',
+  //         onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+  //       },
+  //       () => ['cardType', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })]
+  //     )
+  //   },
+  //   cell: ({ row }) => h('div', row.getValue('cardType')),
+  // },
   {
-    accessorKey: 'cardType',
-    header: ({ column }) => {
-      return h(
-        Button,
-        {
-          variant: 'ghost',
-          onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
-        },
-        () => ['cardType', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })]
-      )
-    },
-    cell: ({ row }) => h('div', row.getValue('cardType')),
+    accessorKey: 'bin8',
+    header: 'bin',
+    cell: ({ row }) => h('a', row.getValue('bin8')),
   },
-  {
-    accessorKey: 'number',
-    header: 'number',
-    cell: ({ row }) => h('a', row.getValue('number')),
-  },
-  {
-    accessorKey: 'country',
-    header: 'country',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('country')),
-  },
-  {
-    accessorKey: 'discoverTime',
-    header: 'Discover Time',
-    cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discoverTime')),
-  },
+  // {
+  //   accessorKey: 'country',
+  //   header: 'country',
+  //   cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('country')),
+  // },
+  // {
+  //   accessorKey: 'country',
+  //   header: 'country',
+  //   cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('country')),
+  // },
+  // {
+  //   accessorKey: 'discoverTime',
+  //   header: 'Discover Time',
+  //   cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discoverTime')),
+  // },
   // {
   //   id: 'actions',
   //   enableHiding: false,

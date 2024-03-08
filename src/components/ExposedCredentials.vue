@@ -12,6 +12,14 @@ import { Input } from './ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { valueUpdater } from '../lib/utils'
 
+import axios from 'axios'
+
+// make axios requests with access control allow origin header
+
+const hola = axios.get('https://k4nx54luivar556iismhicd4ie0chdyw.lambda-url.us-east-2.on.aws/').then(async (response) => {
+  return response.data
+})
+const data: Payment[] = await hola
 export interface Payment {
   status: 'pending' | 'processing' | 'reported' | 'false alarm'
   id: string
@@ -19,65 +27,64 @@ export interface Payment {
   username: string
   domain: string
   password: string
-  discoverTime: string
 }
 
-const data: Payment[] = [
-  {
-    id: 'm5gr84i9',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'pending',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '3u1reuv4',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'pending',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'derv1ws0',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'processing',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'processing',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: '5kma53ae',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'processing',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-  {
-    id: 'bhqecj4p',
-    email: 'example@domain.com',
-    username: 'user',
-    status: 'reported',
-    domain: 'domin.io',
-    password: '*************',
-    discoverTime: '2024-02-22',
-  },
-]
+// const data: Payment[] = [
+//   {
+//     id: 'm5gr84i9',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'pending',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+//   {
+//     id: '3u1reuv4',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'pending',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+//   {
+//     id: 'derv1ws0',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'processing',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+//   {
+//     id: '5kma53ae',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'processing',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+//   {
+//     id: '5kma53ae',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'processing',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+//   {
+//     id: 'bhqecj4p',
+//     email: 'example@domain.com',
+//     username: 'user',
+//     status: 'reported',
+//     domain: 'domin.io',
+//     password: '*************',
+//     discoverTime: '2024-02-22',
+//   },
+// ]
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -100,17 +107,17 @@ const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('status')),
+    cell: ({ row }) => h('div', { class: 'capitalize' }, 'pending'),
   },
   {
     accessorKey: 'username',
     header: 'username',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('username')),
+    cell: ({ row }) => h('div', { class: '' }, row.getValue('username')),
   },
   {
     accessorKey: 'password',
     header: 'password',
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('password')),
+    cell: ({ row }) => h('div', { class: 'text-muted-foreground' }, '*********'),
   },
   {
     accessorKey: 'domain',
@@ -131,11 +138,7 @@ const columns: ColumnDef<Payment>[] = [
     header: 'email',
     cell: ({ row }) => h('a', row.getValue('email')),
   },
-  {
-    accessorKey: 'discoverTime',
-    header: 'Discover Time',
-    cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discoverTime')),
-  },
+
   // {
   //   id: 'actions',
   //   enableHiding: false,

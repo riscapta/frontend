@@ -206,11 +206,21 @@ function viewSelector(view) {
             </div>
           </div>
         </div>
-        <ThreadsView v-if="threadsView" />
-        <WebVulnerabilitiesView v-if="webVulnerabilitiesView" />
-        <ExposedPortsView v-if="exposedPortsView" />
-        <ExposedCards v-if="exposedCardsView" />
-        <ExposedCredentials v-if="exposedCredentialsView" />
+        <Suspense>
+          <ThreadsView v-if="threadsView" />
+        </Suspense>
+        <Suspense>
+          <WebVulnerabilitiesView v-if="webVulnerabilitiesView" />
+        </Suspense>
+        <Suspense>
+          <ExposedPortsView v-if="exposedPortsView" />
+        </Suspense>
+        <Suspense>
+          <ExposedCards v-if="exposedCardsView" />
+        </Suspense>
+        <Suspense>
+          <ExposedCredentials v-if="exposedCredentialsView" />
+        </Suspense>
       </div>
     </div>
   </div>

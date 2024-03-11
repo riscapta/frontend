@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Chillax';
-  src: url('../src/assets/Chillax-Variable.ttf');
+  font-family: 'IBM Plex Sans';
+  src: url('../src/assets/IBMPlexSans-Regular.ttf');
 }
 
 @layer base {

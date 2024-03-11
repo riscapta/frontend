@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     fontFamily: {
       chillax: ['Chillax'],
+      ibm: ['IBM Plex Sans'],
     },
     container: {
       center: true,

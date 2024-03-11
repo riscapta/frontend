@@ -78,7 +78,7 @@ function viewSelector(view) {
             </a>
           </li>
           <li>
-            <a href="#" class="flex items-center p-2 border-l-4 border-l-[#0752EF] text-gray-900 dark:text-white dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 border-l-4 border-l-[#6354CA] text-gray-900 dark:text-white dark:hover:bg-gray-700 group">
               <img src="../assets/Subtract.png" class="w-7 pl-2" />
             </a>
           </li>
@@ -96,8 +96,8 @@ function viewSelector(view) {
         <div class="grid grid-cols-2 gap-4 mb-4">
           <div class="h-24">
             <div class="flex items-center gap-3">
-              <img src="../assets/anovaicon.png" alt="Anova" class="w-5 h-5" />
-              <p class="text-2xl font-semibold text-[#4C4E5B] dark:text-gray-500 font-chillax">Aurora</p>
+              <img src="../assets/riscapta_violet.png" alt="Riscapta" class="w-5 h-5" />
+              <p class="text-2xl font-semibold text-[#1f1f1f] dark:text-gray-500 font-ibm">Riscapta</p>
             </div>
           </div>
           <div class="flex justify-end h-24 rounded dark:bg-gray-800 gap-4 text-[#8E9099] text-sm">
@@ -110,7 +110,7 @@ function viewSelector(view) {
         </div>
 
         <div class="flex gap-5 items-center justify-center mb-4 border-b rounded dark:bg-gray-800">
-          <div v-if="threadsView" class="flex gap-3 items-center border-b-2 border-b-[#0752EF] pb-4 px-4 font-semibold text-[#0752EF]">
+          <div v-if="threadsView" class="flex gap-3 items-center border-b-2 border-b-[#6354CA] pb-4 px-4 font-semibold text-[#6354CA]">
             <img src="../assets/phishing.png" alt="Anova" class="w-7" />
             <a>Phishing</a>
           </div>
@@ -118,7 +118,7 @@ function viewSelector(view) {
             <img src="../assets/phishingicon_deselected.png" alt="Anova" class="w-7" />
             <a>Phishing</a>
           </div>
-          <div v-if="webVulnerabilitiesView" class="flex gap-3 items-center border-b-2 border-b-[#0752EF] pb-4 px-4 font-semibold text-[#0752EF]">
+          <div v-if="webVulnerabilitiesView" class="flex gap-3 items-center border-b-2 border-b-[#6354CA] pb-4 px-4 font-semibold text-[#6354CA]">
             <img src="../assets/webvulnerabilities.png" alt="Anova" class="w-7" />
             <a>Web Vulnerabilities</a>
           </div>
@@ -126,7 +126,7 @@ function viewSelector(view) {
             <img src="../assets/webvulnerabilities_deselected.png" alt="Anova" class="w-7" />
             <a>Web Vulnerabilities</a>
           </div>
-          <div v-if="exposedPortsView" class="flex gap-3 items-center border-b-2 border-b-[#0752EF] pb-4 px-4 font-semibold text-[#0752EF]">
+          <div v-if="exposedPortsView" class="flex gap-3 items-center border-b-2 border-b-[#6354CA] pb-4 px-4 font-semibold text-[#6354CA]">
             <img src="../assets/ports.png" alt="Anova" class="w-7" />
             <a>Exposed Ports</a>
           </div>
@@ -134,7 +134,7 @@ function viewSelector(view) {
             <img src="../assets/ports_deselected.png" alt="Anova" class="w-7" />
             <a>Exposed Ports</a>
           </div>
-          <div v-if="exposedCredentialsView" class="flex gap-3 items-center border-b-2 border-b-[#0752EF] pb-4 px-4 font-semibold text-[#0752EF]">
+          <div v-if="exposedCredentialsView" class="flex gap-3 items-center border-b-2 border-b-[#6354CA] pb-4 px-4 font-semibold text-[#6354CA]">
             <img src="../assets/duck.svg" alt="Anova" class="w-7" />
             <a>Exposed Credentials</a>
           </div>
@@ -142,7 +142,7 @@ function viewSelector(view) {
             <img src="../assets/duck.svg" alt="Anova" class="w-7" />
             <a>Exposed Credentials</a>
           </div>
-          <div v-if="exposedCardsView" class="flex gap-3 items-center border-b-2 border-b-[#0752EF] pb-4 px-4 font-semibold text-[#0752EF]">
+          <div v-if="exposedCardsView" class="flex gap-3 items-center border-b-2 border-b-[#6354CA] pb-4 px-4 font-semibold text-[#6354CA]">
             <img src="../assets/duck.svg" alt="Anova" class="w-7" />
             <a>Exposed Cards</a>
           </div>
@@ -198,7 +198,7 @@ function viewSelector(view) {
                 <div class="flex items-center gap-2">
                   <p class="text-2xl text-[#232A45] dark:text-gray-500">8,3%</p>
                   <div class="px-3 py-1 bg-[#F0F2FC] rounded-full">
-                    <p class="text-xs text-[#2657FF] font-bold">High</p>
+                    <p class="text-xs text-[#6354CA] font-bold">High</p>
                   </div>
                 </div>
                 <p class="text-md text-[#A1A6B5] dark:text-gray-500">Predicted % VIP</p>

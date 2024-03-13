@@ -13,9 +13,10 @@ export default {
   async setup() {
     const auth0 = useAuth0()
     if (auth0.isLoading) {
-      await new Promise((resolve) => setTimeout(resolve, 500))
+      await new Promise((resolve) => setTimeout(resolve, 3000))
     }
     if (!auth0.isAuthenticated.value && auth0.isLoading) {
+      if (auth0.isLoading) console.log('loading')
       console.log('must login')
       auth0.loginWithRedirect()
     }

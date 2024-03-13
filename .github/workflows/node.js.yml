@@ -29,6 +29,7 @@ jobs:
     - run: npm i rollup
     - run: npm ci
     - run: npm run build --if-present
+    - run: npm run domain
   # - run: npm run domain
     - name: Push
       uses: s0/git-publish-subdir-action@develop

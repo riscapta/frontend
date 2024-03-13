@@ -25,6 +25,11 @@ export default {
       console.log('logged in')
     }
     return {
+      threadsView: ref(true),
+      webVulnerabilitiesView: ref(false),
+      exposedPortsView: ref(false),
+      exposedCardsView: ref(false),
+      exposedCredentialsView: ref(false),
       isAuthenticated: auth0.isAuthenticated,
       isLoading: auth0.isLoading,
       user: auth0.user,
@@ -37,46 +42,49 @@ export default {
       },
     }
   },
-}
-
-const threadsView = ref(true)
-const webVulnerabilitiesView = ref(false)
-const exposedPortsView = ref(false)
-const exposedCardsView = ref(false)
-const exposedCredentialsView = ref(false)
-
-function viewSelector(view) {
-  if (view === 'threads') {
-    threadsView.value = true
-    webVulnerabilitiesView.value = false
-    exposedPortsView.value = false
-    exposedCardsView.value = false
-    exposedCredentialsView.value = false
-  } else if (view === 'webVulnerabilities') {
-    threadsView.value = false
-    webVulnerabilitiesView.value = true
-    exposedPortsView.value = false
-    exposedCardsView.value = false
-    exposedCredentialsView.value = false
-  } else if (view === 'exposedPorts') {
-    threadsView.value = false
-    webVulnerabilitiesView.value = false
-    exposedPortsView.value = true
-    exposedCardsView.value = false
-    exposedCredentialsView.value = false
-  } else if (view === 'exposedCards') {
-    threadsView.value = false
-    webVulnerabilitiesView.value = false
-    exposedPortsView.value = false
-    exposedCardsView.value = true
-    exposedCredentialsView.value = false
-  } else if (view === 'exposedCredentials') {
-    threadsView.value = false
-    webVulnerabilitiesView.value = false
-    exposedPortsView.value = false
-    exposedCardsView.value = false
-    exposedCredentialsView.value = true
-  }
+  methods: {
+    viewSelector(view) {
+      if (view === 'threads') {
+        this.threadsView = true
+        this.webVulnerabilitiesView = false
+        this.exposedPortsView = false
+        this.exposedCardsView = false
+        this.exposedCredentialsView = false
+      } else if (view === 'webVulnerabilities') {
+        this.threadsView = false
+        this.webVulnerabilitiesView = true
+        this.exposedPortsView = false
+        this.exposedCardsView = false
+        this.exposedCredentialsView = false
+      } else if (view === 'exposedPorts') {
+        this.threadsView = false
+        this.webVulnerabilitiesView = false
+        this.exposedPortsView = true
+        this.exposedCardsView = false
+        this.exposedCredentialsView = false
+      } else if (view === 'exposedCards') {
+        this.threadsView = false
+        this.webVulnerabilitiesView = false
+        this.exposedPortsView = false
+        this.exposedCardsView = true
+        this.exposedCredentialsView = false
+      } else if (view === 'exposedCredentials') {
+        this.threadsView = false
+        this.webVulnerabilitiesView = false
+        this.exposedPortsView = false
+        this.exposedCardsView = false
+        this.exposedCredentialsView = true
+      }
+    },
+  },
+  components: {
+    Button,
+    ThreadsView,
+    WebVulnerabilitiesView,
+    ExposedPortsView,
+    ExposedCards,
+    ExposedCredentials,
+  },
 }
 </script>
 

@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import { ref } from 'vue'
 import Button from './ui/button/Button.vue'
 import ThreadsView from './ThreadsView.vue'
@@ -6,8 +6,37 @@ import WebVulnerabilitiesView from './WebVulnerabilitiesView.vue'
 import ExposedPortsView from './ExposedPortsView.vue'
 import ExposedCards from './ExposedCards.vue'
 import ExposedCredentials from './ExposedCredentials.vue'
+import { useAuth0 } from '@auth0/auth0-vue'
 
-defineProps({})
+export default {
+  name: 'NavBar',
+  async setup() {
+    const auth0 = useAuth0()
+    if (auth0.isLoading) {
+      await new Promise((resolve) => setTimeout(resolve, 500))
+    }
+    if (!auth0.isAuthenticated.value && auth0.isLoading) {
+      console.log('must login')
+      auth0.loginWithRedirect()
+    }
+    console.log(auth0.isAuthenticated.value)
+    if (auth0.isAuthenticated.value) {
+      console.log('logged in')
+    }
+    return {
+      isAuthenticated: auth0.isAuthenticated,
+      isLoading: auth0.isLoading,
+      user: auth0.user,
+      logout() {
+        auth0.logout({
+          logoutParams: {
+            returnTo: window.location.origin,
+          },
+        })
+      },
+    }
+  },
+}
 
 const threadsView = ref(true)
 const webVulnerabilitiesView = ref(false)
@@ -51,7 +80,7 @@ function viewSelector(view) {
 </script>
 
 <template>
-  <div class="bg-[#F7F7FA]">
+  <div class="bg-[#F7F7FA]" v-if="isAuthenticated">
     <button
       data-drawer-target="default-sidebar"
       data-drawer-toggle="default-sidebar"
@@ -83,7 +112,7 @@ function viewSelector(view) {
             </a>
           </li>
           <li>
-            <a href="#" class="flex items-center p-3 text-gray-900 dark:text-white dark:hover:bg-gray-700 group">
+            <a v-on:click="logout()" class="cursor-pointer flex items-center p-3 text-gray-900 dark:text-white dark:hover:bg-gray-700 group">
               <img src="../assets/icon2.png" class="w-7 pl-2" />
             </a>
           </li>

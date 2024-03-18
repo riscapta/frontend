@@ -141,7 +141,7 @@ export default {
           <div class="flex justify-end h-24 rounded dark:bg-gray-800 gap-4 text-[#8E9099] text-sm">
             <div class="gap-3 flex">
               <img src="../assets/face.png" class="w-5 h-5" />
-              <p class="">Alexys</p>
+              {{ user.given_name }}
             </div>
             <p class="text-gray-500">example.com</p>
           </div>

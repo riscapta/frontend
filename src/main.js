@@ -12,6 +12,7 @@ app
       domain: authConfig.domain,
       clientId: authConfig.clientId,
       authorizationParams: {
+        audience: authConfig.audience,
         redirect_uri: window.location.origin,
       },
     })

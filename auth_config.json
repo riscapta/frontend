@@ -1,4 +1,5 @@
 {
   "domain": "dev-iruujjxccw1qmb6p.us.auth0.com",
-  "clientId": "3gugf5rKzMFVCeF1hz3mH4tEm2TxpY6c"
+  "clientId": "3gugf5rKzMFVCeF1hz3mH4tEm2TxpY6c",
+  "audience": "https://6xl172qy44.execute-api.us-east-2.amazonaws.com/riscapta/cc"
 }

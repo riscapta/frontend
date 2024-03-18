@@ -14,9 +14,13 @@ import { valueUpdater } from '../lib/utils'
 
 import axios from 'axios'
 
-// make axios requests with access control allow origin header
+import { useAuth0 } from '@auth0/auth0-vue'
 
-const hola = axios.get('https://k4nx54luivar556iismhicd4ie0chdyw.lambda-url.us-east-2.on.aws/').then(async (response) => {
+const auth0 = useAuth0()
+const accessToken = await auth0.getAccessTokenSilently()
+
+axios.defaults.headers.get['id_token'] = accessToken
+const hola = axios.get('https://mn9ggcdjml.execute-api.us-east-2.amazonaws.com/prod/data/exposed_credentials').then(async (response) => {
   return response.data
 })
 const data: Payment[] = await hola

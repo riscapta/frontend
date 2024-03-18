@@ -135,22 +135,7 @@ const columns: ColumnDef<Payment>[] = [
     accessorKey: 'discoverTime',
     header: 'Discover Time',
     cell: ({ row }) => h('div', { class: 'text-sm text-muted-foreground' }, row.getValue('discoverTime')),
-  },
-  // {
-  //   id: 'actions',
-  //   enableHiding: false,
-  //   cell: ({ row }) => {
-  //     const payment = row.original
-
-  //     return h(
-  //       'div',
-  //       { class: 'relative' },
-  //       h(DropdownAction, {
-  //         payment,
-  //       })
-  //     )
-  //   },
-  // },
+  }
 ]
 
 const sorting = ref<SortingState>([])

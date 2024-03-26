@@ -1,5 +1,5 @@
 {
-  "domain": "dev-iruujjxccw1qmb6p.us.auth0.com",
-  "clientId": "3gugf5rKzMFVCeF1hz3mH4tEm2TxpY6c",
-  "audience": "https://6xl172qy44.execute-api.us-east-2.amazonaws.com/riscapta/cc"
+  "domain": "riscapta.us.auth0.com",
+  "clientId": "tICvl59ZrJIJfyh2Sfccrtf682pThg9X",
+  "audience": "https://mn9ggcdjml.execute-api.us-east-2.amazonaws.com/prod/data/"
 }
